@@ -30,11 +30,6 @@
 
 #define LOG(x) std::cerr
 
-#import <Flutter/Flutter.h>
-
-@interface TflitePlugin : NSObject<FlutterPlugin>
-@end
-
 typedef void (^TfLiteStatusCallback)(TfLiteStatus);
 NSString* loadModel(NSObject<FlutterPluginRegistrar>* _registrar, NSDictionary* args);
 void runTflite(NSDictionary* args, TfLiteStatusCallback cb);
