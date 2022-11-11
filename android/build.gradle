@@ -23,6 +23,36 @@ rootProject.allprojects {
 
 apply plugin: 'com.android.library'
 
+// android {
+//     compileSdkVersion 31
+
+//     compileOptions {
+//         sourceCompatibility JavaVersion.VERSION_1_8
+//         targetCompatibility JavaVersion.VERSION_1_8
+//     }
+
+//     kotlinOptions {
+//         jvmTarget = '1.8'
+//     }
+
+//     sourceSets {
+//         main.java.srcDirs += 'src/main/kotlin'
+//     }
+
+//     defaultConfig {
+//         minSdkVersion 19
+//         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+//     }
+//     lintOptions {
+//         disable 'InvalidPackage'
+//     }
+
+//     dependencies {
+//         compile 'org.tensorflow:tensorflow-lite:+'
+//         compile 'org.tensorflow:tensorflow-lite-gpu:+'
+//     }
+// }
+
 android {
     compileSdkVersion 31
 
@@ -40,15 +70,11 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 19
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-    }
-    lintOptions {
-        disable 'InvalidPackage'
+        minSdkVersion 16
     }
 
     dependencies {
-        compile 'org.tensorflow:tensorflow-lite:+'
-        compile 'org.tensorflow:tensorflow-lite-gpu:+'
+        implementation 'org.tensorflow:tensorflow-lite:+'
+        implementation 'org.tensorflow:tensorflow-lite-gpu:+'
     }
 }
