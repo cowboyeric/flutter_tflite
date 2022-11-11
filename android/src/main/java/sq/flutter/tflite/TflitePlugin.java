@@ -23,7 +23,8 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
+// import io.flutter.plugin.common.PluginRegistry.Registrar;
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.Interpreter;
@@ -50,9 +51,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Vector;
+import androidx.annotation.NonNull;
 
 
-public class TflitePlugin implements MethodCallHandler {
+public class TflitePlugin implements FlutterPlugin, MethodCallHandler {
   private final Registrar mRegistrar;
   private Interpreter tfLite;
   private boolean tfLiteBusy = false;
@@ -81,6 +83,19 @@ public class TflitePlugin implements MethodCallHandler {
   Map<String, Integer> partsIds = new HashMap<>();
   List<Integer> parentToChildEdges = new ArrayList<>();
   List<Integer> childToParentEdges = new ArrayList<>();
+
+  private MethodChannel channel;
+
+  @Override
+  public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
+    channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "tflite");
+    channel.setMethodCallHandler(this);
+  }
+
+  @Override
+  public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
+    channel.setMethodCallHandler(null);
+  }
 
   public static void registerWith(Registrar registrar) {
     final MethodChannel channel = new MethodChannel(registrar.messenger(), "tflite");
