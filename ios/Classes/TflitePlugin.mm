@@ -1114,7 +1114,7 @@ NSData* fetchArgmax(const NSArray* labelColors, const NSString* outputType) {
                                                        8, // bitsPerComponent
                                                        4 * width, // bytesPerRow
                                                        colorSpace,
-                                                       kCGImageAlphaNoneSkipLast);
+                                                       kCGImageAlphaPremultipliedLast);
     
     CFRelease(colorSpace);
     CGImageRef cgImage = CGBitmapContextCreateImage(bitmapContext);
