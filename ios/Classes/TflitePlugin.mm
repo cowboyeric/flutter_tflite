@@ -1107,7 +1107,7 @@ NSData* fetchArgmax(const NSArray* labelColors, const NSString* outputType) {
   }
   
   if ([outputType isEqual: @"png"]) {
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
     CGContextRef bitmapContext = CGBitmapContextCreate(out,
                                                        width,
                                                        height,
