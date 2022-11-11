@@ -2,15 +2,13 @@ group 'sq.flutter.tflite'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.6.10'
     repositories {
         google()
         jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.android.tools.build:gradle:3.6.3'
     }
 }
 
@@ -23,54 +21,15 @@ rootProject.allprojects {
 
 apply plugin: 'com.android.library'
 
-// android {
-//     compileSdkVersion 31
-
-//     compileOptions {
-//         sourceCompatibility JavaVersion.VERSION_1_8
-//         targetCompatibility JavaVersion.VERSION_1_8
-//     }
-
-//     kotlinOptions {
-//         jvmTarget = '1.8'
-//     }
-
-//     sourceSets {
-//         main.java.srcDirs += 'src/main/kotlin'
-//     }
-
-//     defaultConfig {
-//         minSdkVersion 19
-//         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-//     }
-//     lintOptions {
-//         disable 'InvalidPackage'
-//     }
-
-//     dependencies {
-//         compile 'org.tensorflow:tensorflow-lite:+'
-//         compile 'org.tensorflow:tensorflow-lite-gpu:+'
-//     }
-// }
-
 android {
-    compileSdkVersion 31
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
+    compileSdkVersion 28
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 19
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+    lintOptions {
+        disable 'InvalidPackage'
     }
 
     dependencies {
